@@ -1,5 +1,5 @@
 const program = require('commander')
-const c = require('../commands/check')
+const check = require('../commands/check')
 
 program
     .command('price')
@@ -10,6 +10,6 @@ program
         'BTC,ETH,XRP'
     )
     .option('--cur <currency>', 'Change the currency', 'USD')
-    .action(() => check.price())
+    .action(cmd => check.price(cmd));
 
 program.parse(process.argv)
