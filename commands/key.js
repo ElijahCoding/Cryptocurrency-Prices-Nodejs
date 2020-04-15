@@ -17,18 +17,30 @@ const key = {
         const key = keyManager.setKey(input.key)
 
         if (key) {
-            console.log('API Key Set'.blue);
+            console.log('API Key Set'.blue)
         }
     },
     show () {
         try {
-
+            const keyManager = new KeyManager()
+            const key = keyManager.getKey()
+            console.log('Current API Key: ', key.yellow)
+            return key
         } catch (e) {
-
+            console.error(e.message.red);
         }
     },
     remove () {
-        console.log('remove')
+        try {
+            const keyManager = new KeyManager()
+            keyManager.deleteKey()
+
+            console.log('Key Removed'.blue)
+
+            return
+        } catch (e) {
+            console.error(e.message.red)
+        }
     }
 }
 
